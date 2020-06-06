@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Clip</string>
+    <string name="title">Shid ClipBoard Manager</string>
+    <string name="switch_activate_service">Activate Service</string>
+    <string name="general_channel">General Channel</string>
+    <string name="data_texview">NO DATA AVAILABLE</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
