@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager
     private lateinit var appBarLayout: AppBarLayout
+    private val TAG: String = MainActivity::class.java.simpleName
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
