@@ -22,9 +22,20 @@
 
 
             <ImageView
-                android:id="@+id/image"
+                android:id="@+id/image_zoro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/zoro_day"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/image_zoro_night"
                 android:layout_width="208dp"
                 android:layout_height="164dp"
+                android:visibility="gone"
                 android:src="@drawable/zoro"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -45,20 +56,7 @@
                 app:layout_constraintStart_toEndOf="@+id/image"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/btn_bulbOn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="52dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="24dp"
-                android:layout_toLeftOf="@+id/image"
-                android:background="@drawable/bulb_on"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.729"
-                app:layout_constraintStart_toEndOf="@+id/image"
-                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
