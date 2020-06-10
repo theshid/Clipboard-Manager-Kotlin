@@ -3,6 +3,8 @@ package com.shid.clipboardmanagerkt.UI
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +13,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
 import com.shid.clipboardmanagerkt.Adapters.ViewPagerAdapter
 import com.shid.clipboardmanagerkt.R
+import com.shid.clipboardmanagerkt.Utils.BounceInterpolator
 import com.shid.clipboardmanagerkt.Utils.SharedPref
 
 
@@ -33,7 +36,15 @@ class MainActivity : AppCompatActivity() {
 
         setUI()
         checkPref()
+        setButtonAnimation()
         btnClickListener()
+    }
+
+    private fun setButtonAnimation() {
+        val animation:Animation = AnimationUtils.loadAnimation(this,R.anim.bounce)
+        var interpolator = BounceInterpolator()
+        animation.setInterpolator(interpolator)
+        btnBulbOff.startAnimation(animation)
     }
 
     private fun setUI() {

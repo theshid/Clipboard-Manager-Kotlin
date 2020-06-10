@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import com.shid.clipboardmanagerkt.Database.ClipDatabase
 import com.shid.clipboardmanagerkt.R
+import com.shid.clipboardmanagerkt.ViewModel.MainViewModel
+import com.shid.clipboardmanagerkt.ViewModel.MainViewModelFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,8 +38,17 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        setViewModel()
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.home_fragment, container, false)
+    }
+
+    private fun setViewModel() {
+        val application = requireNotNull(this.activity).application
+        val dataSource = ClipDatabase.getInstance(application).clipDao
+        val viewModelFactory = MainViewModelFactory(dataSource,application)
+        val viewModel = ViewModelProvider(this,viewModelFactory).get(MainViewModel::class.java)
     }
 
     companion object {
