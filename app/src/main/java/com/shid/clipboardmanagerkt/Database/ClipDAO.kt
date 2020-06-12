@@ -11,20 +11,20 @@ import com.shid.clipboardmanagerkt.Model.ClipEntry
 interface ClipDAO {
 
     @Query("SELECT * FROM clip ORDER BY date")
-    fun loadAllClips(): LiveData<List<ClipEntry?>?>?
+    suspend fun loadAllClips(): LiveData<List<ClipEntry?>?>?
 
     @Insert
-    fun insertClip(clipEntry: ClipEntry?)
+    suspend fun insertClip(clipEntry: ClipEntry?)
 
     @Delete
-    fun deleteClip(clipEntry: ClipEntry?)
+    suspend fun deleteClip(clipEntry: ClipEntry?)
 
     @Query("SELECT * FROM clip WHERE favorite = 1 ORDER BY date")
-    fun loadFavoriteClips(): LiveData<List<ClipEntry?>?>?
+    suspend fun loadFavoriteClips(): LiveData<List<ClipEntry?>?>?
 
     @Query("UPDATE clip SET favorite = :fav WHERE clipId = :id")
-    fun update(fav: Int, id: Int)
+    suspend fun update(fav: Int, id: Int)
 
     @Query("UPDATE clip SET entry = :ent WHERE clipId = :id")
-    fun updateClip(ent: String?, id: Int)
+    suspend fun updateClip(ent: String?, id: Int)
 }
