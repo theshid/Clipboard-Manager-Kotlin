@@ -11,10 +11,10 @@ import com.shid.clipboardmanagerkt.Model.ClipEntry
 interface ClipDAO {
 
     @Query("SELECT * FROM clip ORDER BY date")
-    suspend fun loadAllClips(): LiveData<List<ClipEntry?>?>?
+    fun loadAllClips(): LiveData<List<ClipEntry>>
 
     @Insert
-    suspend fun insertClip(clipEntry: ClipEntry?)
+    suspend fun insertClip(clipEntry: ClipEntry)
 
     @Delete
     suspend fun deleteClip(clipEntry: ClipEntry?)

@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.shid.clipboardmanagerkt.Database.ClipDAO
+import com.shid.clipboardmanagerkt.Model.ClipEntry
 import kotlinx.coroutines.*
 
 class MainViewModel (
@@ -32,10 +33,32 @@ class MainViewModel (
      */
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
+    val allClips = database.loadAllClips()
+
 
     fun getAllEntries(){
         viewModelScope.launch {
             val mClipEntries = database.loadAllClips()
         }
+    }
+
+     fun deleteClip(selectedClip:ClipEntry){
+         uiScope.launch {
+             withContext(Dispatchers.IO){
+                 database.deleteClip(selectedClip)
+             }
+         }
+
+    }
+
+    /**
+     * Called when the ViewModel is dismantled.
+     * At this point, we want to cancel all coroutines;
+     * otherwise we end up with processes that have nowhere to return to
+     * using memory and resources.
+     */
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }

@@ -14,11 +14,11 @@ import java.util.*
 class ClipAdapter constructor(var context: Context, var listener: ItemClickListener) :
     RecyclerView.Adapter<ClipAdapter.ClipViewHolder>() {
 
-    private var mClipEntries = listOf<ClipEntry>()
-    set(value){
-        field = value
-        notifyDataSetChanged()
-    }
+    var mClipEntries = listOf<ClipEntry>()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
     private lateinit var mContext: Context
     private var dateFormat: SimpleDateFormat = SimpleDateFormat(DATE_FORMAT, Locale.getDefault())
 
