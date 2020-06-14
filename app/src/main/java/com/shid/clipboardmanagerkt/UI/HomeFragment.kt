@@ -55,6 +55,7 @@ class HomeFragment : Fragment(), ClipAdapter.ItemClickListener {
     private lateinit var mAdapter: ClipAdapter
     private var isServiceOn: Boolean = false
     val clipList = listOf<ClipEntry>()
+    lateinit var emptyView:TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,24 +63,24 @@ class HomeFragment : Fragment(), ClipAdapter.ItemClickListener {
 
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         layoutView = inflater.inflate(R.layout.home_fragment, container, false)
         setViewModel()
-        setUI()
+        setUI(layoutView)
+        checkPref()
+        handleAutoListen()
         // Inflate the layout for this fragment
         return layoutView
     }
 
-    private fun setUI() {
+    private fun setUI(view: View) {
         val application = requireNotNull(this.activity).application
         val dataSource = ClipDatabase.getInstance(application).clipDao
         val viewModelFactory = MainViewModelFactory(dataSource, application)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        var emptyView: TextView = view!!.findViewById(R.id.empty_view)
-        rootLayout = view!!.findViewById<LinearLayout>(R.id.rootLayout)
+        emptyView = view.findViewById(R.id.empty_view)
+        rootLayout = view.findViewById<LinearLayout>(R.id.rootLayout)
         // Set the RecyclerView to its corresponding view
 
         // Set the RecyclerView to its corresponding view
@@ -201,7 +202,7 @@ class HomeFragment : Fragment(), ClipAdapter.ItemClickListener {
 
     private fun startAutoService() {
         isServiceOn = true
-        val intentService: Intent = Intent(activity, AutoListenService::class.java)
+        val intentService = Intent(activity, AutoListenService::class.java)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             activity!!.startForegroundService(intentService)
         } else {

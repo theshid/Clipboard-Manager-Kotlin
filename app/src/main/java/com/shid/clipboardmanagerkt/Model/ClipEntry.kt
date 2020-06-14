@@ -8,7 +8,8 @@ import java.util.*
 @Entity(tableName = "clip")
 data class ClipEntry (
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "clip_id")
     var clipId:Int =0,
     var entry:String,
-    var date: Calendar,
+    var date: Date,
     var favorite:Int = 0)

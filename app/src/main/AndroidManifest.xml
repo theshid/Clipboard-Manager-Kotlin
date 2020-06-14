@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/DayTheme">
         <activity android:name=".UI.EditActivity"></activity>
+        <receiver
+            android:name=".Utils.StopAutoListenReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name=".Service.AutoListenService"
+            android:enabled="true"
+            android:exported="true" />
         <activity android:name=".UI.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

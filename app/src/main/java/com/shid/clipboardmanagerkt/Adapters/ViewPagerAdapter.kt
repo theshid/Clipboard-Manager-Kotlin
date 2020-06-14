@@ -15,10 +15,16 @@ class ViewPagerAdapter internal constructor(fm: FragmentManager) :
     private val count = 2
     override fun getItem(position: Int): Fragment {
 
-        when (position) {
-            0 -> {return HomeFragment()}
-            1 -> {return FavoriteFragment()}
-            else -> {return  HomeFragment()}
+        return when (position) {
+            0 -> {
+                HomeFragment()
+            }
+            1 -> {
+                FavoriteFragment()
+            }
+            else -> {
+                HomeFragment()
+            }
         }
 
     }
