@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.shid.clipboardmanagerkt.Model.ClipEntry
@@ -77,10 +78,14 @@ class ClipAdapter constructor(var context: Context, var listener: ItemClickListe
 
         lateinit var clipView: TextView
         lateinit var dateClip: TextView
+        lateinit var viewForeground: RelativeLayout
+        lateinit var viewBackground: RelativeLayout
 
         init {
             clipView = itemView.findViewById(R.id.clip_entry);
             dateClip = itemView.findViewById(R.id.clipDate);
+            viewBackground = itemView.findViewById(R.id.view_background)
+            viewForeground = itemView.findViewById(R.id.view_foreground)
         }
 
 
